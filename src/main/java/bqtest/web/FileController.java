@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -32,8 +34,8 @@ public class FileController {
 
         log.info("Got an request to load file {}", fileToLoad);
 
-        File uploadedFile = new File(fileToLoad);
-
+        Path pathToFile = Paths.get(fileToLoad);
+        File uploadedFile = new File(pathToFile.toAbsolutePath().toString());
         Map<String, List<Member>> groupedMembers = fileProcessor.processFile(uploadedFile);
 
         log.info("Successfully grouped to {} states ", groupedMembers.keySet().size());

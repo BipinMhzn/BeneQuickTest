@@ -25,12 +25,10 @@
 
     <h3>Member Data File Viewer App</h3>
 
-    <!-- Display your states in a drop down here -->
+    <select ng-model="state" ng-options="x for (x,y) in stateMembers"></select>
     <br />
-
     <div>
-
-            <h4> Members from state: <!-- State name here --> </h4>
+            <h4> Members from state: {{state.$get}} </h4>
 
             <table class="table table-striped">
                 <thead>
@@ -46,7 +44,15 @@
                 </thead>
 
                 <tbody>
-                    <!-- Populate member details per state here -->
+                    <tr ng-repeat="member in state">
+                        <td>{{member.id}}</td>
+                        <td>{{member.address}}</td>
+                        <td>{{member.city}}</td>
+                        <td>{{member.firstName}}</td>
+                        <td>{{member.lastName}}</td>
+                        <td>{{member.state}}</td>
+                        <td>{{member.zip}}</td>
+                    </tr>
                 </tbody>
             </table>
 
