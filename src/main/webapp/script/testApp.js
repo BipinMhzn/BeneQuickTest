@@ -12,4 +12,8 @@ angular.module('bqTestModule', [])
                 });
             }
 
+            $scope.displayState = function(){
+                $scope.selectedState = $scope.state[0].state;
+            }
+
         }]);

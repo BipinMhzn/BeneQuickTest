@@ -25,10 +25,12 @@
 
     <h3>Member Data File Viewer App</h3>
 
-    <select ng-model="state" ng-options="x for (x,y) in stateMembers"></select>
+    <select ng-model="state" ng-options="x for (x,y) in stateMembers" ng-change="displayState()">
+        <option value="">--Select State--</option>
+    </select>
     <br />
     <div>
-            <h4> Members from state: {{state.$get}} </h4>
+            <h4> Members from state: {{selectedState}} </h4>
 
             <table class="table table-striped">
                 <thead>
