@@ -6,10 +6,14 @@ angular.module('bqTestModule', [])
 
             function fetchData() {
                 $http({method: 'GET', url: 'api/load-data'}).then(function (response) {
-                    console.log(response.data);
+                    $scope.stateMembers = response.data;
                 }, function (reason) {
                     console.log('error ' + reason)
                 });
+            }
+
+            $scope.displayState = function(){
+                $scope.selectedState = $scope.state[0].state;
             }
 
         }]);
